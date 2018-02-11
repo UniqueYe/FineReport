@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<WorkBook xmlVersion="20091224"><TableDataMap><TableData name="ds1" class="com.fr.data.impl.DBTableData"><Parameters><Parameter><Attributes name="p_dtto"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_sex"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_deptno"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_quit"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_dtfr"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_empno"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_gradno"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_corpno"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_roomno"/><O><![CDATA[]]></O></Parameter><Parameter><Attributes name="p_postno"/><O><![CDATA[]]></O></Parameter></Parameters><Attributes maxMemRowCount="-1"/><Connection class="com.fr.data.impl.NameDatabaseConnection"><DatabaseName><![CDATA[dbpkg]]></DatabaseName></Connection><Query><![CDATA[SELECT (SELECT ENAME FROM LOCA WHERE LOCANO='CNDO1') CORPNAME,
+<WorkBook xmlVersion="20120529" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="p_dtto"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_sex"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_deptno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_quit"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_dtfr"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_empno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_gradno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_corpno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_roomno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="p_postno"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[dbpkg]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT (SELECT ENAME FROM LOCA WHERE LOCANO='CNDO1') CORPNAME,
        (SELECT NVL(LNAME,CNAME) FROM PRJOBJECT WHERE ENAME='paraEMPHOUSEDAY' AND ROWNUM=1) REPORTNAME,
         E.ROOMNO,E.CNAME,T.CNAME SEX,E.EMPNO,L.SNAME,D.CNAME DEPTNAME,P.CNAME POSTNAME,E.JOINDATE,NULL UPDDTTM,NULL RMK
 FROM EMP E,LOCA L,DEPT D,POST P,(SELECT TMPLNO,CNAME FROM TMPL WHERE TMPLTY='HR_SEX') T
@@ -17,4 +78,252 @@ WHERE E.CORPNO=L.LOCANO AND E.DEPTNO=D.DEPTNO AND E.POSTNO=P.POSTNO AND E.SEX=T.
   AND (SUBSTR(E.ROOMNO,1,LENGTH('${p_roomno}'))>='${p_roomno}' AND SUBSTR(E.ROOMNO,1,LENGTH('${p_empno}'))<='${p_empno}' AND '${p_roomno}' IS NOT NULL AND '${p_empno}' IS NOT NULL  OR '${p_empno}' IS NULL)
   AND (E.JOINDATE>=TO_DATE('${p_dtfr}','YYYY-MM-DD') OR '${p_dtfr}' IS NULL)
   AND (E.JOINDATE<=TO_DATE('${p_dtto}','YYYY-MM-DD') OR '${p_dtto}' IS NULL)
-ORDER BY E.ROOMNO,E.EMPNO]]></Query></TableData></TableDataMap><ReportSettings isHorizontalCenterOnPage="true" headerHeight="0.0" footerHeight="0.1968503937007874"><Margin top="0.11811023622047245" left="0.11811023622047245" bottom="0.11811023622047245" right="0.11811023622047245"/></ReportSettings><ReportParameterAttr><Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/><PWTitle><![CDATA[参数]]></PWTitle></ReportParameterAttr><Report class="com.fr.report.WorkSheet" name="sheet1"><ReportSettings isHorizontalCenterOnPage="true" headerHeight="0.0" footerHeight="0.1968503937007874"><Margin top="0.11811023622047245" left="0.11811023622047245" bottom="0.11811023622047245" right="0.11811023622047245"/></ReportSettings><ReportPageAttr><HR F="0" T="2"/><FR/><HC/><FC/></ReportPageAttr><Header reportPageType="0"><Background name="NullBackground"/><LeftList/><CenterList/><RightList/></Header><Footer reportPageType="0"><Background name="NullBackground"/><LeftList><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[第]]></HFElement><HFElement className="com.fr.report.core.headerfooter.PageNumberHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[1]]></HFElement><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[頁/共]]></HFElement><HFElement className="com.fr.report.core.headerfooter.NumberOfPageHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[100]]></HFElement><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[頁]]></HFElement></LeftList><CenterList><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[列印時間: ]]></HFElement><HFElement className="com.fr.report.core.headerfooter.DateHFElement"><FRFont name="SimSun" style="0" size="12"/><Format class="java.text.SimpleDateFormat"><![CDATA[yyyy-MM-dd]]></Format></HFElement><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[ ]]></HFElement><HFElement className="com.fr.report.core.headerfooter.TimeHFElement"><FRFont name="SimSun" style="0" size="12"/><Format class="java.text.SimpleDateFormat"><![CDATA[HH:mm:ss]]></Format></HFElement></CenterList><RightList><HFElement className="com.fr.report.core.headerfooter.TextHFElement"><FRFont name="SimSun" style="0" size="12"/><![CDATA[Ver: 3.0.0]]></HFElement></RightList></Footer><RowHeight defaultValue="19"><![CDATA[40,35,30,20,19,19,19,19,19,19,19]]></RowHeight><ColumnWidth defaultValue="72"><![CDATA[65,65,37,75,90,105,105,80,85,60,72]]></ColumnWidth><CellElementList><C c="0" r="0" cs="10" s="0"><O t="DSColumn"><Attributes dsName="ds1" columnName="CORPNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="0" r="1" cs="10" s="1"><O t="DSColumn"><Attributes dsName="ds1" columnName="REPORTNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="0" r="2" s="2"><O><![CDATA[宿舍]]></O><Expand/></C><C c="1" r="2" s="2"><O><![CDATA[姓名]]></O><Expand/></C><C c="2" r="2" s="2"><O><![CDATA[性別]]></O><Expand/></C><C c="3" r="2" s="2"><O><![CDATA[工號]]></O><Expand/></C><C c="4" r="2" s="2"><O><![CDATA[廠別]]></O><Expand/></C><C c="5" r="2" s="2"><O><![CDATA[部門]]></O><Expand/></C><C c="6" r="2" s="2"><O><![CDATA[職位]]></O><Expand/></C><C c="7" r="2" s="2"><O><![CDATA[入廠日期]]></O><Expand/></C><C c="8" r="2" s="2"><O><![CDATA[更新宿舍信息]]></O><Expand/></C><C c="9" r="2" s="2"><O><![CDATA[備註]]></O><Expand/></C><C c="0" r="3" s="2"><O t="DSColumn"><Attributes dsName="ds1" columnName="ROOMNO"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"><Attr divideMode="1"/></RG></O><Expand dir="0"/></C><C c="1" r="3" s="2"><O t="DSColumn"><Attributes dsName="ds1" columnName="CNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="2" r="3" s="2"><O t="DSColumn"><Attributes dsName="ds1" columnName="SEX"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="3" r="3" s="2"><O t="DSColumn"><Attributes dsName="ds1" columnName="EMPNO"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="4" r="3" s="3"><O t="DSColumn"><Attributes dsName="ds1" columnName="SNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="5" r="3" s="3"><O t="DSColumn"><Attributes dsName="ds1" columnName="DEPTNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="6" r="3" s="3"><O t="DSColumn"><Attributes dsName="ds1" columnName="POSTNAME"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="7" r="3" s="4"><O t="DSColumn"><Attributes dsName="ds1" columnName="JOINDATE"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="8" r="3" s="4"><O t="DSColumn"><Attributes dsName="ds1" columnName="UPDDTTM"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C><C c="9" r="3" s="2"><O t="DSColumn"><Attributes dsName="ds1" columnName="RMK"/><Complex/><RG class="com.fr.report.cellElement.core.FunctionGrouper"/></O><Expand dir="0"/></C></CellElementList></Report><StyleList><Style horizontal_alignment="0"><FRFont name="SimSun" style="1" size="20"/><Background name="NullBackground"/><Border/></Style><Style horizontal_alignment="0"><FRFont name="SimSun" style="0" size="16"/><Background name="NullBackground"/><Border/></Style><Style horizontal_alignment="0"><FRFont name="SimSun" style="0" size="12"/><Background name="NullBackground"/><Border><Top style="1"/><Bottom style="1"/><Left style="1"/><Right style="1"/></Border></Style><Style paddingLeft="5"><FRFont name="SimSun" style="0" size="12"/><Background name="NullBackground"/><Border><Top style="1"/><Bottom style="1"/><Left style="1"/><Right style="1"/></Border></Style><Style horizontal_alignment="0"><Format class="java.text.SimpleDateFormat"><![CDATA[yyyy-MM-dd]]></Format><FRFont name="SimSun" style="0" size="12"/><Background name="NullBackground"/><Border><Top style="1"/><Bottom style="1"/><Left style="1"/><Right style="1"/></Border></Style></StyleList></WorkBook>
+ORDER BY E.ROOMNO,E.EMPNO
+
+
+]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR F="0" T="2"/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1524000,1333500,1143000,762000,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2476500,2476500,1409700,2857500,3429000,4000500,4000500,3048000,3238500,2286000,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="10" s="0">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="CORPNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="1" cs="10" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="REPORTNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="2" s="2">
+<O>
+<![CDATA[宿舍]]></O>
+<Expand/>
+</C>
+<C c="1" r="2" s="2">
+<O>
+<![CDATA[姓名]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="2">
+<O>
+<![CDATA[性別]]></O>
+<Expand/>
+</C>
+<C c="3" r="2" s="2">
+<O>
+<![CDATA[工號]]></O>
+<Expand/>
+</C>
+<C c="4" r="2" s="2">
+<O>
+<![CDATA[廠別]]></O>
+<Expand/>
+</C>
+<C c="5" r="2" s="2">
+<O>
+<![CDATA[部門]]></O>
+<Expand/>
+</C>
+<C c="6" r="2" s="2">
+<O>
+<![CDATA[職位]]></O>
+<Expand/>
+</C>
+<C c="7" r="2" s="2">
+<O>
+<![CDATA[入廠日期]]></O>
+<Expand/>
+</C>
+<C c="8" r="2" s="2">
+<O>
+<![CDATA[更新宿舍信息]]></O>
+<Expand/>
+</C>
+<C c="9" r="2" s="2">
+<O>
+<![CDATA[備註]]></O>
+<Expand/>
+</C>
+<C c="0" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ROOMNO"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper">
+<Attr divideMode="1"/>
+</RG>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="CNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="SEX"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="EMPNO"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="SNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DEPTNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="POSTNAME"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="JOINDATE"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="8" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="UPDDTTM"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="9" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="RMK"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings isHorizontalCenterOnPage="true" headerHeight="0" footerHeight="719999">
+<PaperSetting>
+<Margin top="432000" left="432000" bottom="432000" right="432000"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="96"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1" paddingLeft="4">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.SimpleDateFormat">
+<![CDATA[yyyy-MM-dd]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>
